@@ -548,3 +548,5 @@ def linear_regression():
         plt.ylabel('Stock Adj Close Price')
         plt.legend()
         st.pyplot(linear_regression_fig)
+
+dead_variable
