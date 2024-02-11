@@ -1,5 +1,6 @@
 print("Changes to test new linter updates")
-if djeijeidje
+test = "Hello"
+if test:
          print("Error")
 
 
