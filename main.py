@@ -5,7 +5,7 @@ if djeijeidje
 
    print("More Errors")
 
-
+ unused_variable = "Dannty"
  weird_indent_number2=  "Negative"
 
 "Are you sure this is PEP8?"
