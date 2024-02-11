@@ -9,15 +9,23 @@ jobs:
       matrix:
         python-version: ["3.8", "3.9", "3.10"]
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v3
-      with:
-        python-version: ${{ matrix.python-version }}
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install pylint
-    - name: Analysing the code with pylint
-      run: |
-        pylint --disable=C0114 --fail-under=8 $(git ls-files '*.py')
+      - uses: actions/checkout@v3
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v3
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pylint
+      - name: Analysing the code with pylint
+        run: |
+          pylint_output=$(pylint --disable=C0114 --fail-under=8 $(git ls-files '*.py'))
+          pylint_exit_code=$?
+          echo "$pylint_output"
+          if [ $pylint_exit_code -eq 0 ]; then
+            echo "Pylint check passed"
+          else
+            echo "Pylint check failed with exit code $pylint_exit_code"
+            exit 1
+          fi
