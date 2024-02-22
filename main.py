@@ -6,6 +6,6 @@ if djeijeidje:
     print("More Errors")
 
 
-weird_indent_number2=  "Negative"
+weird_indent_number2 = "Negative"
 
 "Are you sure this is PEP8?"
